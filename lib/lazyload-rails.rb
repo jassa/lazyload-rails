@@ -12,6 +12,6 @@ ActionView::Helpers::AssetTagHelper.module_eval do
 
     img["src"] = placeholder
     img["data-original"] = src
-    img.to_s
+    img.to_s.html_safe
   end
 end
