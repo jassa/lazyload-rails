@@ -3,6 +3,16 @@
 This project integrates the jQuery Lazy Load Plugin
 for Rails `image_tag` helpers
 
+### What's jQuery Lazy Load?
+
+From the project page:
+
+*Lazy Load is a jQuery plugin written in JavaScript. It delays loading of images in long web pages. Images outside of viewport (visible part of web page) won't be loaded before user scrolls to them. This is opposite of image preloading.*
+
+*Using Lazy Load on long web pages containing many large images makes the page load faster. Browser will be in ready state after loading visible images. In some cases it can also help to reduce server load.*
+
+See [example](http://backbonejs.org/#examples) (scroll down to see images load)
+
 ## Documentation
 
 ### Features
