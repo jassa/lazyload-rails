@@ -17,6 +17,6 @@ Gem::Specification.new do |gem|
   gem.files       = `git ls-files`.split($/)
   gem.test_files  = gem.files.grep(%r{^(test|spec|features)/})
 
-  gem.add_dependency "nokogiri", "~> 1.5.9"
+  gem.add_dependency "nokogiri", "~> 1.5"
   gem.add_development_dependency "actionpack", ">= 3.1"
 end
