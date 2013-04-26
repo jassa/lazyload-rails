@@ -38,6 +38,12 @@ Add this line to your application's Gemfile:
 Download the [jQuery Lazy Load Plugin](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.js)
 into your `vendor/assets/javascripts` directory and include it however you prefer.
 
+And in your JavaScript code do:
+
+    $("img").lazyload();
+
+Lazy Load can be customized, [see more options](http://www.appelsiini.net/projects/lazyload)
+
 *Important: Remember that the Lazy Load Plugin depends on jQuery.*
 
 ## FAQ
