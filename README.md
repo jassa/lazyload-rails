@@ -46,6 +46,15 @@ Lazy Load can be customized, [see more options](http://www.appelsiini.net/projec
 
 *Important: Remember that the Lazy Load Plugin depends on jQuery.*
 
+## Configuration
+
+By default, a 1x1 grey gif is used as placeholder (from [http://appelsiini.net/projects/lazyload/img/grey.gif](http://www.appelsiini.net/projects/lazyload/img/grey.gif)). This can be easily customized:
+
+    # config/initializers/lazyload.rb
+    Lazyload::Rails.configure do |config|
+      config.placeholder = "/public/img/grey.gif"
+    end
+
 ## FAQ
 
 * *Q: How can I use the old `image_tag` method?*
