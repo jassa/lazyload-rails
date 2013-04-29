@@ -1,5 +1,6 @@
 require "nokogiri"
 require "action_view"
+
 require "lazyload-rails/version"
 
 ActionView::Helpers::AssetTagHelper.module_eval do
