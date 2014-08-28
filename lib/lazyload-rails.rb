@@ -35,12 +35,14 @@ ActionView::Helpers::AssetTagHelper.module_eval do
   alias :x_image_tag :image_tag
 
   def image_tag(*attrs)
-    placeholder = Lazyload::Rails.configuration.placeholder
-    img = Nokogiri::HTML::DocumentFragment.parse(x_image_tag(*attrs)).at_css("img")
-    src = img["src"]
+    if !attrs.last.delete(:lazy)
+      x_image_tag(*attrs)
+    else
+      img = Nokogiri::HTML::DocumentFragment.parse(x_image_tag(*attrs)).at_css("img")
 
-    img["src"] = placeholder
-    img["data-original"] = src
-    img.to_s.html_safe
+      img["data-original"] = img["src"]
+      img["src"] = Lazyload::Rails.configuration.placeholder
+      img.to_s.html_safe
+    end
   end
 end

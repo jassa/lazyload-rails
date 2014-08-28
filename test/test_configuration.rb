@@ -1,6 +1,6 @@
 require "lazyload-rails_test"
 
-class Lazyload::Rails::TestCase < Test::Unit::TestCase
+class Lazyload::Rails::TestCase < Minitest::Test
 
   def test_single_configuration_object
     assert_equal Lazyload::Rails.configuration,
