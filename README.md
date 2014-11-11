@@ -17,7 +17,8 @@ See [example](http://backbonejs.org/#examples) (scroll down to see images load)
 
 ### Features
 
-* `lazy: true` config option to get lazy loaded images
+* Add `lazy: true` option to Rails `image_tag` helpers to render lazyload-friendly
+-html img tags.
 * Simple, really. That's pretty much it.
 
 ### Example
