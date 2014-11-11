@@ -32,15 +32,37 @@ module Lazyload
 end
 
 ActionView::Helpers::AssetTagHelper.module_eval do
-  alias :x_image_tag :image_tag
+  alias :rails_image_tag :image_tag
 
   def image_tag(*attrs)
-    placeholder = Lazyload::Rails.configuration.placeholder
-    img = Nokogiri::HTML::DocumentFragment.parse(x_image_tag(*attrs)).at_css("img")
-    src = img["src"]
+    options, args = extract_options_and_args(*attrs)
+    image_html = rails_image_tag(*args)
 
-    img["src"] = placeholder
-    img["data-original"] = src
+    if options[:lazy]
+      to_lazy_image(image_html)
+    else
+      image_html
+    end
+  end
+
+  private
+
+  def to_lazy_image(image_html)
+    img = Nokogiri::HTML::DocumentFragment.parse(image_html).at_css("img")
+
+    img["data-original"] = img["src"]
+    img["src"] = Lazyload::Rails.configuration.placeholder
+
     img.to_s.html_safe
   end
+
+  def extract_options_and_args(*attrs)
+    options = attrs.last.dup
+    args = attrs
+
+    args.last.delete(:lazy)
+
+    [options, args]
+  end
+
 end

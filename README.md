@@ -17,13 +17,13 @@ See [example](http://backbonejs.org/#examples) (scroll down to see images load)
 
 ### Features
 
-* Automatically get Rails `image_tag` helpers to render lazyload-friendly
-html img tags.
+* Add `lazy: true` option to Rails `image_tag` helpers to render lazyload-friendly
+-html img tags.
 * Simple, really. That's pretty much it.
 
 ### Example
 
-    <%= image_tag "kittenz.png", alt: "OMG a cat!" %>
+    <%= image_tag "kittenz.png", alt: "OMG a cat!", lazy: true %>
 
 Equals:
 
