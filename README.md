@@ -60,6 +60,9 @@ By default, a 1x1 grey gif is used as placeholder (from [http://appelsiini.net/p
 * *Q: How can I use the old `image_tag` method?*
 * R: Try with `x_image_tag`
 
+* *Q: No implicit conversion of Symbol into String error when not setting lazy attribute*
+* R: Explicitly add text to alt. <%= image_tag 'foo.jpg', alt: 'barbaz' %>
+
 ## License
 
 Lazyload-Rails is released under the [MIT License](http://www.opensource.org/licenses/MIT).
