@@ -17,9 +17,8 @@ See [example](http://backbonejs.org/#examples) (scroll down to see images load)
 
 ### Features
 
-* Add `lazy: true` option to Rails `image_tag` helpers to render lazyload-friendly
--html img tags.
-* Simple, really. That's pretty much it.
+* Add `lazy: true` option to Rails `image_tag` helpers to render lazyload-friendly img tags.
+* Simple (really). That's pretty much it.
 
 ### Example
 
@@ -44,7 +43,7 @@ And in your JavaScript code do:
 
 Lazy Load can be customized, [see more options](http://www.appelsiini.net/projects/lazyload)
 
-*Important: Remember that the Lazy Load Plugin depends on jQuery.*
+*__Important__: Remember that the Lazy Load Plugin depends on jQuery.*
 
 ## Configuration
 
@@ -54,11 +53,6 @@ By default, a 1x1 grey gif is used as placeholder (from [http://appelsiini.net/p
     Lazyload::Rails.configure do |config|
       config.placeholder = "/public/img/grey.gif"
     end
-
-## FAQ
-
-* *Q: How can I use the old `image_tag` method?*
-* R: Try with `x_image_tag`
 
 ## License
 
