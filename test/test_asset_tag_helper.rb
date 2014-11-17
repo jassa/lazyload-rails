@@ -34,15 +34,6 @@ class AssetTagHelperTest < ActionView::TestCase
     @controller.request = @request
   end
 
-  def test_nonlazy_attributes
-    Lazyload::Rails.reset
-
-    expected = '<img alt="Foo" height="150" src="/images/foo.png" width="100" />'
-
-    assert_equal expected, image_tag("foo.png", size: "100x150", lazy: false)
-    assert_equal expected, image_tag("foo.png", size: "100x150")
-  end
-
   def test_lazy_attributes
     Lazyload::Rails.reset
 
@@ -59,7 +50,8 @@ class AssetTagHelperTest < ActionView::TestCase
     expected = '<img alt="Bar" data-original="/images/bar.png" height="150"' +
       ' src="http://www.appelsiini.net/projects/lazyload/img/grey.gif" width="200">'
 
-    actual = image_tag("bar.png", size: "200x150", data: { original: "foo" }, lazy: true)
+    options = { size: "200x150", data: { original: "foo" }, lazy: true }
+    actual = image_tag("bar.png", options)
 
     assert_equal expected, actual
   end
@@ -73,5 +65,19 @@ class AssetTagHelperTest < ActionView::TestCase
       ' width="100" data-original="/images/baz.png">'
 
     assert_equal expected, image_tag("baz.png", size: "100x250", lazy: true)
+  end
+
+  def test_nonlazy_attributes
+    Lazyload::Rails.reset
+
+    expected = '<img alt="Foo" height="150" src="/images/foo.png" width="100" />'
+
+    assert_equal expected, image_tag("foo.png", size: "100x150", lazy: false)
+    assert_equal expected, image_tag("foo.png", size: "100x150")
+  end
+
+  def test_empty_options
+    expected = '<img alt="Foo" src="/images/foo.png" />'
+    assert_equal expected, image_tag("foo.png")
   end
 end

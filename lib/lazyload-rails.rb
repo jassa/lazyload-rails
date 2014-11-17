@@ -57,10 +57,14 @@ ActionView::Helpers::AssetTagHelper.module_eval do
   end
 
   def extract_options_and_args(*attrs)
-    options = attrs.last.dup
     args = attrs
 
-    args.last.delete(:lazy)
+    if args.size > 1
+      options = attrs.last.dup
+      args.last.delete(:lazy)
+    else
+      options = {}
+    end
 
     [options, args]
   end
