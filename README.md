@@ -27,6 +27,8 @@ See [example](http://backbonejs.org/#examples) (scroll down to see images load)
 Equals:
 
     <img alt="OMG a cat!" data-original="/images/kittenz.png" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif">
+    
+**PRO TIP!** You must set image dimensions either as width and height attributes or in CSS. Otherwise plugin might not work properly.
 
 ## Install
 
