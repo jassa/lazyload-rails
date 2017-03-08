@@ -37,6 +37,10 @@ Add this line to your application's Gemfile:
 Download the [jQuery Lazy Load Plugin](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.js)
 into your `vendor/assets/javascripts` directory and include it however you prefer.
 
+Require in your application.js
+
+    //= require jquery.lazyload
+
 And in your JavaScript code do:
 
     $("img").lazyload();
