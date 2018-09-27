@@ -22,24 +22,32 @@ See [example](http://backbonejs.org/#examples) (scroll down to see images load)
 
 ### Example
 
-    <%= image_tag "kittenz.png", alt: "OMG a cat!", lazy: true %>
+```erb
+<%= image_tag "kittenz.png", alt: "OMG a cat!", lazy: true %>
+```
 
 Equals:
 
-    <img alt="OMG a cat!" data-original="/images/kittenz.png" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif">
+```html
+<img alt="OMG a cat!" data-original="/images/kittenz.png" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif">
+```
 
 ## Install
 
 Add this line to your application's Gemfile:
 
-    gem "lazyload-rails"
+```ruby
+gem "lazyload-rails"
+```
 
 Download the [jQuery Lazy Load Plugin](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.js)
 into your `vendor/assets/javascripts` directory and include it however you prefer.
 
 And in your JavaScript code do:
 
-    $("img").lazyload();
+```javascript
+$("img").lazyload();
+```
 
 Lazy Load can be customized, [see more options](http://www.appelsiini.net/projects/lazyload)
 
@@ -49,10 +57,12 @@ Lazy Load can be customized, [see more options](http://www.appelsiini.net/projec
 
 By default, a 1x1 grey gif is used as placeholder (from [http://appelsiini.net/projects/lazyload/img/grey.gif](http://www.appelsiini.net/projects/lazyload/img/grey.gif)). This can be easily customized:
 
-    # config/initializers/lazyload.rb
-    Lazyload::Rails.configure do |config|
-      config.placeholder = "/public/img/grey.gif"
-    end
+```ruby
+# config/initializers/lazyload.rb
+Lazyload::Rails.configure do |config|
+  config.placeholder = "/public/img/grey.gif"
+end
+```
 
 ## License
 
