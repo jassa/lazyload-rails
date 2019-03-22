@@ -20,7 +20,7 @@ module Lazyload
         @placeholder = new_placeholder
       end
 
-      # When set to true
+      # When set to true every image_tag will always be lazy loaded
       def always_lazy=(always_lazy_value)
         @always_lazy = always_lazy_value
       end
