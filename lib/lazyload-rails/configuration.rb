@@ -20,9 +20,18 @@ module Lazyload
         @placeholder = new_placeholder
       end
 
+      # When set to true
+      def always_lazy=(always_lazy_value)
+        @always_lazy = always_lazy_value
+      end
+      def always_lazy
+        @always_lazy
+      end
+
       # Set default settings
       def initialize
         @placeholder = "http://www.appelsiini.net/projects/lazyload/img/grey.gif"
+        @always_lazy = false
       end
     end
   end
