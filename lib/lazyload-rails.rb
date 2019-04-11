@@ -1,8 +1,7 @@
 require "nokogiri"
 require "action_view"
-
 require "lazyload-rails/version"
-require "lazyload-rails/configuration"
+require "lazyload-rails/config"
 
 module Lazyload
   module Rails
@@ -68,5 +67,4 @@ ActionView::Helpers::AssetTagHelper.module_eval do
 
     [options, args]
   end
-
 end
