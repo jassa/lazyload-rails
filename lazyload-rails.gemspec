@@ -11,7 +11,9 @@ Gem::Specification.new do |gem|
   gem.files = Dir["README.md", "MIT-LICENSE", "lib/**/*.rb"]
 
   gem.add_dependency "nokogiri", "~> 1.5"
-  gem.add_development_dependency "actionpack", ">= 3.1"
+  gem.add_development_dependency "test-unit"
+  gem.add_development_dependency "minitest"
+  gem.add_development_dependency "actionpack", ">= 3"
 
   gem.author = "Javier Trevino Saldana"
   gem.email  = "jts@dynamic.tech"
