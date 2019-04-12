@@ -5,6 +5,7 @@ class TestImageTag < ::ActionView::TestCase
 
   def setup
     backwards_compatibility_setup
+    Lazyload::Rails.reset
   end
 
   def test_lazy_option_sets_lazy_attributes
@@ -13,6 +14,29 @@ class TestImageTag < ::ActionView::TestCase
     assert_match %r(^.*foo.png$), img["data-original"]
     assert_equal "151", img["height"]
     assert_equal "101", img["width"]
+  end
+
+  def test_lazy_by_default_config_sets_lazy_attributes
+    Lazyload::Rails.configure do |config|
+      config.lazy_by_default = true
+    end
+
+    img = parse(image_tag("foo.png", size: "101x151"))
+
+    assert_match %r(^.*foo.png$), img["data-original"]
+    assert_equal "151", img["height"]
+    assert_equal "101", img["width"]
+  end
+
+  def test_lazy_option_overrides_default_config
+    Lazyload::Rails.configure do |config|
+      config.lazy_by_default = true
+    end
+
+    img = parse(image_tag("foo.png", size: "101x151", lazy: false))
+
+    assert_nil img["data-original"]
+    assert_match %r(^.*foo.png$), img["src"]
   end
 
   def test_lazy_attrs_override_conflicting_attributes
@@ -32,8 +56,6 @@ class TestImageTag < ::ActionView::TestCase
 
     assert_equal "/public/img/grey.gif", img["src"]
     assert_match %r(^.*baz.png$), img["data-original"]
-
-    Lazyload::Rails.reset
   end
 
   def test_nonlazy_attributes_can_be_set

@@ -37,8 +37,10 @@ ActionView::Helpers::AssetTagHelper.module_eval do
     options, args = extract_options_and_args(*attrs)
     image_html = rails_image_tag(*args)
 
-    if options[:lazy] || Lazyload::Rails.configuration.lazy_by_default
-      to_lazy_image(image_html)
+    is_lazy = options.fetch(:lazy) { Lazyload::Rails.configuration.lazy_by_default }
+
+    if is_lazy
+      to_lazy(image_html)
     else
       image_html
     end
@@ -46,7 +48,7 @@ ActionView::Helpers::AssetTagHelper.module_eval do
 
   private
 
-  def to_lazy_image(image_html)
+  def to_lazy(image_html)
     img = Nokogiri::HTML::DocumentFragment.parse(image_html).at_css("img")
 
     img["data-original"] = img["src"]
