@@ -36,20 +36,20 @@ Equals:
 
 ## Install
 
-Add this line to your application's Gemfile:
+1. Add this line to your application's Gemfile:
 
-```ruby
-gem "lazyload-rails"
-```
+        gem "lazyload-rails"
 
-Download the [jQuery Lazy Load Plugin](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.js)
-into your `vendor/assets/javascripts` directory and include it however you prefer.
+2. Download the [jQuery Lazy Load Plugin](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.js)
+into your `vendor/assets/javascripts` directory.
 
-And in your JavaScript code do:
+3. Include it however you prefer. For example, in your application.js you could add:
 
-```javascript
-$("img").lazyload();
-```
+        //= require jquery.lazyload
+
+4. In your JavaScript code do:
+
+        $("img").lazyload();
 
 Lazy Load can be customized, [see more options](http://www.appelsiini.net/projects/lazyload)
 
