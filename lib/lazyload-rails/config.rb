@@ -20,9 +20,18 @@ module Lazyload
         @placeholder = new_placeholder
       end
 
+      # When set to true every image_tag will include { lazy: true } by default
+      def lazy_by_default=(lazy_by_default)
+        @lazy_by_default = !!lazy_by_default
+      end
+      def lazy_by_default
+        @lazy_by_default
+      end
+
       # Set default settings
       def initialize
         @placeholder = "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+        @lazy_by_default = false
       end
     end
   end
