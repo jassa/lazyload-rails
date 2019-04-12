@@ -18,18 +18,32 @@ See [example](http://backbonejs.org/#examples) (scroll down to see images load)
 ### Features
 
 * Add `lazy: true` option to Rails `image_tag` helpers to render lazyload-friendly img tags.
+* Global config available to make them lazy by default.
 * Simple (really). That's pretty much it.
 
 ### Example
 
 ```erb
-<%= image_tag "kittenz.png", alt: "OMG a cat!", lazy: true %>
+<%= image_tag "kittenz.png", lazy: true %>
+```
+
+or
+
+```ruby
+# config/initializers/lazyload.rb
+Lazyload::Rails.configure do |config|
+  config.lazy_by_default = true
+end
+```
+```erb
+<%= image_tag "kittenz.png" %>
 ```
 
 Equals:
 
 ```html
-<img alt="OMG a cat!" data-original="/images/kittenz.png" src="http://www.appelsiini.net/projects/lazyload/img/grey.gif">
+<img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+     data-original="/images/kittenz.png" />
 ```
 
 **PRO TIP!** You must set image dimensions either as width and height attributes or in CSS. Otherwise plugin might not work properly.
@@ -57,12 +71,16 @@ Lazy Load can be customized, [see more options](http://www.appelsiini.net/projec
 
 ## Configuration
 
-By default, a 1x1 grey gif is used as placeholder (from [http://appelsiini.net/projects/lazyload/img/grey.gif](http://www.appelsiini.net/projects/lazyload/img/grey.gif)). This can be easily customized:
-
 ```ruby
 # config/initializers/lazyload.rb
 Lazyload::Rails.configure do |config|
+  # By default, a 1x1 grey gif is used as placeholder ("data:image/gif;base64,...").
+  # This can be easily customized:
   config.placeholder = "/public/img/grey.gif"
+
+  # image_tag can return lazyload-friendly images by default,
+  # no need to pass the { lazy: true } option
+  config.lazy_by_default = true
 end
 ```
 
