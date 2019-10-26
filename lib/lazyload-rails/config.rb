@@ -28,10 +28,18 @@ module Lazyload
         @lazy_by_default
       end
 
+      def lazy_class
+        @lazy_class
+      end
+      def lazy_class=(new_lazy_class)
+        @lazy_class = new_lazy_class
+      end
+
       # Set default settings
       def initialize
         @placeholder = "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
         @lazy_by_default = false
+        @lazy_class = 'lazy'
       end
     end
   end

@@ -43,7 +43,7 @@ Equals:
 
 ```html
 <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-     data-original="/images/kittenz.png" />
+     data-original="/images/kittenz.png" class="lazy" />
 ```
 
 **PRO TIP!** You must set image dimensions either as width and height attributes or in CSS. Otherwise plugin might not work properly.
@@ -63,7 +63,7 @@ into your `vendor/assets/javascripts` directory.
 
 4. In your JavaScript code do:
 
-        $("img").lazyload();
+        $("img.lazy").lazyload();
 
 Lazy Load can be customized, [see more options](http://www.appelsiini.net/projects/lazyload)
 
@@ -77,6 +77,10 @@ Lazyload::Rails.configure do |config|
   # By default, a 1x1 grey gif is used as placeholder ("data:image/gif;base64,...").
   # This can be easily customized:
   config.placeholder = "/public/img/grey.gif"
+
+  # By default, "lazy" is added as class name.
+  # This can be easily customized:
+  config.lazy_class = "lazyload"
 
   # image_tag can return lazyload-friendly images by default,
   # no need to pass the { lazy: true } option
