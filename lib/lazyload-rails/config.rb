@@ -28,10 +28,19 @@ module Lazyload
         @lazy_by_default
       end
 
+      # When { lazy: true } image_tag will include the lazy_css_class
+      def lazy_css_class
+        @lazy_css_class
+      end
+      def lazy_css_class=(lazy_css_class)
+        @lazy_css_class = lazy_css_class
+      end
+
       # Set default settings
       def initialize
         @placeholder = "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
         @lazy_by_default = false
+        @lazy_css_class = nil
       end
     end
   end
